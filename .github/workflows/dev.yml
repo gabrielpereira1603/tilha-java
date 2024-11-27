@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - develop
 name: Deploy Trilha Java - Produção
 jobs:
   web-deploy:
