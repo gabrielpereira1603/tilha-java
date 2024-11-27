@@ -8,7 +8,30 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <style>
+            .ticket-button {
+                width: 100%; /* Ocupa toda a largura */
+                background: orange; /* Cor de fundo */
+                color: black; /* Cor do texto */
+                padding: 12px; /* Espaçamento interno */
+                border: none; /* Remove bordas */
+                border-radius: 8px; /* Bordas arredondadas */
+                font-size: 16px; /* Tamanho do texto */
+                font-weight: bold; /* Texto em negrito */
+                cursor: pointer; /* Mostra o cursor de clique */
+                animation: pulse-scale 1.5s infinite; /* Aplica a animação */
+                transform-origin: center; /* Define o ponto de origem do efeito */
+            }
 
+            @keyframes pulse-scale {
+                0%, 100% {
+                    transform: scale(1); /* Tamanho normal */
+                }
+                50% {
+                    transform: scale(1.05); /* Cresce 10% */
+                }
+            }
+        </style>
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @else
@@ -19,100 +42,140 @@
     </head>
     @include('layouts.navigation')
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="container mx-auto px-4 py-8">
-        <!-- Título -->
-        <h1 class="text-2xl font-bold text-start mb-8 dark:text-white">
-            Inscrição Trilha do Java - 5ª Edição
-        </h1>
+        <div class="container mx-auto px-4 py-8">
+            <!-- Título -->
+            <h1 class="text-2xl font-bold text-start mb-8 dark:text-white">
+                Inscrição Trilha do Java - 5ª Edição
+            </h1>
 
-        <!-- Container principal -->
-        <div class="flex flex-col md:flex-row items-start gap-8">
-            <!-- Imagem do evento -->
-            <div class="flex-1 flex justify-center">
-                <div class="bg-white rounded-[10px] overflow-hidden shadow-lg border-2 border-orange-300 transition-transform transform hover:scale-105 hover:shadow-md">
-                    <img src="{{ asset('images/logos/logo-principal.jpg') }}" alt="Trilhão do Queixada" class="object-cover">
-                </div>
-            </div>
-
-            <!-- Informações do evento -->
-            <div class="flex-1 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg space-y-6">
-                <!-- Informações do organizador -->
-                <div>
-                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
-                        <x-application-logo width="30" height="30" />
-                        Por Javalis do Norte
-                    </h2>
-                    <ul class="space-y-4">
-                        <li class="flex items-center dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2">
-                                <x-location-icon width="20" height="20" color="orange"/>
-                            </span>
-                            Vera - Mato Grosso
-                        </li>
-                        <li class="flex items-center dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2">
-                                <x-race-icon width="20" height="20" color="orange"/>
-                            </span>
-                            Posto San Raphael (Las Veras) as 08:00
-                        </li>
-                        <li class="flex items-center dark:text-white">
-                               <span class="text-yellow-500 material-icons mr-2">
-                                <x-calendar-icon width="20" height="20" color="orange"/>
-                            </span>
-                            11 de Janeiro de 2025
-                        </li>
-                    </ul>
+            <!-- Container principal -->
+            <div class="flex flex-col lg:flex-row items-start gap-8">
+                <!-- Imagem do evento -->
+                <div class="lg:sticky lg:top-8 flex-1 flex justify-center">
+                    <div class="bg-white rounded-[10px] overflow-hidden shadow-lg border-2 border-orange-300 transition-transform transform hover:scale-105 hover:shadow-md">
+                        <img src="{{ asset('images/logos/logo-principal.jpg') }}" alt="Trilhão do Queixada" class="object-cover">
+                    </div>
                 </div>
 
-                <!-- Detalhes do evento -->
-                <div>
-                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
-                        <x-details-icon width="30" height="30" color="currentColor"/>
-                        Detalhes Da Programação Do Evento
-                    </h2>
-                    <ul class="space-y-2">
-                        <li class="flex items-start dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2 mt-1">
-                                <x-arrow-right-icon width="20" height="20" color="orange"/>
-                            </span>
-                            Deslocamento de 18 km até o ponto de início da trilha,
-                            com percurso exclusivo para veículos 4x4. Durante a trilha,
-                            haverá momentos de confraternização, proporcionando interação, diversão e uma experiência única.
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
-                        <x-phone-icon width="25" height="25" color="currentColor"/>
-                        Telefones para contato
-                    </h2>
-                    <ul class="space-y-3">
-                        <li class="flex items-start mt-0 dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
-                                <x-arrow-right-icon width="20" height="20" color="orange"/>
-                            </span>
-                            (66) 9 9926-0742 - Guilherme
-                        </li>
+                <!-- Informações do evento -->
+                <div class="flex-1 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg space-y-6 h-screen overflow-y-auto">
+                    <!-- Informações do organizador -->
+                    <div>
+                        <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                            <x-application-logo width="40" height="40" />
+                            Por Javalis do Norte
+                        </h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-center dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2">
+                                    <x-location-icon width="20" height="20" color="orange"/>
+                                </span>
+                                Vera - Mato Grosso
+                            </li>
+                            <li class="flex items-center dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2">
+                                    <x-race-icon width="20" height="20" color="orange"/>
+                                </span>
+                                Posto San Raphael (Las Veras) as 08:00
+                            </li>
+                            <li class="flex items-center dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2">
+                                    <x-calendar-icon width="20" height="20" color="orange"/>
+                                </span>
+                                11 de Janeiro de 2025
+                            </li>
+                            <li class="flex items-center dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2">
+                                    <x-instagram-icon width="20" height="20" color="orange"/>
+                                </span>
+                                <strong>Jipe Clube Javalis do Norte</strong>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <li class="flex items-start mt-0 dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
-                                <x-arrow-right-icon width="20" height="20" color="orange"/>
-                            </span>
-                            (66) 9 8124-1918 - Cicero
-                        </li>
+                    <!-- Detalhes do evento -->
+                    <div>
+                        <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                            <x-details-icon width="30" height="30" color="currentColor"/>
+                            Detalhes Da Programação Do Evento
+                        </h2>
+                        <ul class="space-y-2">
+                            <li class="flex items-start dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-1">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                Deslocamento de 18 km até o ponto de início da trilha,
+                                com percurso exclusivo para veículos 4x4. Durante a trilha,
+                                haverá momentos de confraternização, proporcionando interação, diversão e uma experiência única.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                            <x-phone-icon width="25" height="25" color="currentColor"/>
+                            Telefones para contato
+                        </h2>
+                        <ul class="space-y-3">
+                            <li class="flex items-start mt-0 dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                (66) 9 9926-0742 - Guilherme
+                            </li>
 
-                        <li class="flex items-start mt-0 dark:text-white">
-                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
-                                <x-arrow-right-icon width="20" height="20" color="orange"/>
-                            </span>
-                            (66) 9 9602-3002 - Marcio
-                        </li>
-                    </ul>
-                </div>
+                            <li class="flex items-start mt-0 dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                (66) 9 8124-1918 - Cicero
+                            </li>
+
+                            <li class="flex items-start mt-0 dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                (66) 9 9602-3002 - Marcio
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                            <x-ticket-icon width="30" height="30" color="currentColor"/>
+                            Informações sobre ingressos
+                        </h2>
+                        <ul class="space-y-2">
+                            <li class="flex items-start dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                <p>
+                                    <strong class="mr-0.5">Valor inscrição: </strong><strong  class="mr-0.5">R$350,00</strong> por veículo com direito à <strong  class="mr-0.5 ml-1">2 camisetas e  adesivos.</strong>
+
+                                </p>
+                            </li>
+                            <li class="flex items-start dark:text-white">
+                                <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                    <x-arrow-right-icon width="20" height="20" color="orange"/>
+                                </span>
+                                <p>
+                                    <strong class="mr-0.5">Camiseta/Passageiro adicional:</strong>
+                                    <strong class="mr-0.5">R$100,00.</strong>
+                                    É permitido no
+                                    <strong class="mr-0.5">máximo 4 passageiros por veículo.</strong>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full">
+                        <button class="ticket-button">
+                            Adquira Já seu ingresso!
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </body>
 
 </html>
