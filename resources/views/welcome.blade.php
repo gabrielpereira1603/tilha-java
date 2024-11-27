@@ -21,7 +21,7 @@
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
     <div class="container mx-auto px-4 py-8">
         <!-- Título -->
-        <h1 class="text-2xl font-bold text-start mb-8">
+        <h1 class="text-2xl font-bold text-start mb-8 dark:text-white">
             Inscrição Trilha do Java - 5ª Edição
         </h1>
 
@@ -38,45 +38,77 @@
             <div class="flex-1 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg space-y-6">
                 <!-- Informações do organizador -->
                 <div>
-                    <h2 class="flex items-center text-xl font-bold mb-4 gap-2">
-                        <x-details-icon width="30" height="30" color="orange"/>
+                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                        <x-application-logo width="30" height="30" />
                         Por Javalis do Norte
                     </h2>
                     <ul class="space-y-4">
-                        <li class="flex items-center">
+                        <li class="flex items-center dark:text-white">
                             <span class="text-yellow-500 material-icons mr-2">
                                 <x-location-icon width="20" height="20" color="orange"/>
                             </span>
                             Vera - Mato Grosso
                         </li>
-                        <li class="flex items-center">
+                        <li class="flex items-center dark:text-white">
                             <span class="text-yellow-500 material-icons mr-2">
                                 <x-race-icon width="20" height="20" color="orange"/>
                             </span>
                             Posto San Raphael (Las Veras) as 08:00
                         </li>
-                        <li class="flex items-center">
+                        <li class="flex items-center dark:text-white">
                                <span class="text-yellow-500 material-icons mr-2">
                                 <x-calendar-icon width="20" height="20" color="orange"/>
                             </span>
-                            DD/MM/AAAA
+                            11 de Janeiro de 2025
                         </li>
                     </ul>
                 </div>
 
                 <!-- Detalhes do evento -->
                 <div>
-                    <h2 class="text-xl font-bold mb-4">Detalhes Da Programação Do Evento</h2>
+                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                        <x-details-icon width="30" height="30" color="currentColor"/>
+                        Detalhes Da Programação Do Evento
+                    </h2>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="text-yellow-500 material-icons mr-2">event</span>
-                            6 de dezembro de 2024 18:30
-                        </li>
-                        <li class="flex items-center">
-                            <span class="text-yellow-500 material-icons mr-2">schedule</span>
-                            7 de dezembro de 2024 22:30
+                        <li class="flex items-start dark:text-white">
+                            <span class="text-yellow-500 material-icons mr-2 mt-1">
+                                <x-arrow-right-icon width="20" height="20" color="orange"/>
+                            </span>
+                            Deslocamento de 18 km até o ponto de início da trilha,
+                            com percurso exclusivo para veículos 4x4. Durante a trilha,
+                            haverá momentos de confraternização, proporcionando interação, diversão e uma experiência única.
                         </li>
                     </ul>
+                </div>
+                <div>
+                    <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                        <x-phone-icon width="25" height="25" color="currentColor"/>
+                        Telefones para contato
+                    </h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-start mt-0 dark:text-white">
+                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                <x-arrow-right-icon width="20" height="20" color="orange"/>
+                            </span>
+                            (66) 9 9926-0742 - Guilherme
+                        </li>
+
+                        <li class="flex items-start mt-0 dark:text-white">
+                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                <x-arrow-right-icon width="20" height="20" color="orange"/>
+                            </span>
+                            (66) 9 8124-1918 - Cicero
+                        </li>
+
+                        <li class="flex items-start mt-0 dark:text-white">
+                            <span class="text-yellow-500 material-icons mr-2 mt-0.5">
+                                <x-arrow-right-icon width="20" height="20" color="orange"/>
+                            </span>
+                            (66) 9 9602-3002 - Marcio
+                        </li>
+                    </ul>
+                </div>
                 </div>
             </div>
         </div>
