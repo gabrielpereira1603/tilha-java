@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Trila do Java - 5ª Edição</title>
+        <title>Trilha do Java - 5ª Edição</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -18,7 +18,69 @@
         @endif
     </head>
     @include('layouts.navigation')
-
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Título -->
+        <h1 class="text-2xl font-bold text-start mb-8">
+            Inscrição Trilha do Java - 5ª Edição
+        </h1>
+
+        <!-- Container principal -->
+        <div class="flex flex-col md:flex-row items-start gap-8">
+            <!-- Imagem do evento -->
+            <div class="flex-1 flex justify-center">
+                <div class="bg-white rounded-[10px] overflow-hidden shadow-lg border-2 border-orange-300 transition-transform transform hover:scale-105 hover:shadow-md">
+                    <img src="{{ asset('images/logos/logo-principal.jpg') }}" alt="Trilhão do Queixada" class="object-cover">
+                </div>
+            </div>
+
+            <!-- Informações do evento -->
+            <div class="flex-1 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg space-y-6">
+                <!-- Informações do organizador -->
+                <div>
+                    <h2 class="flex items-center text-xl font-bold mb-4 gap-2">
+                        <x-details-icon width="30" height="30" color="orange"/>
+                        Por Javalis do Norte
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="text-yellow-500 material-icons mr-2">
+                                <x-location-icon width="20" height="20" color="orange"/>
+                            </span>
+                            Vera - Mato Grosso
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-yellow-500 material-icons mr-2">
+                                <x-race-icon width="20" height="20" color="orange"/>
+                            </span>
+                            Posto San Raphael (Las Veras) as 08:00
+                        </li>
+                        <li class="flex items-center">
+                               <span class="text-yellow-500 material-icons mr-2">
+                                <x-calendar-icon width="20" height="20" color="orange"/>
+                            </span>
+                            DD/MM/AAAA
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Detalhes do evento -->
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Detalhes Da Programação Do Evento</h2>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <span class="text-yellow-500 material-icons mr-2">event</span>
+                            6 de dezembro de 2024 18:30
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-yellow-500 material-icons mr-2">schedule</span>
+                            7 de dezembro de 2024 22:30
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
+
 </html>
