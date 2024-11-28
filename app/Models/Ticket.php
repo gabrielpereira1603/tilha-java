@@ -21,4 +21,15 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'belongs_to');
     }
+
+    public function purchase()
+    {
+        return $this->belongsTo(Purchase::class, 'purchase_id');
+    }
+
+    public function scopeAvailableForUser($query, $userId)
+    {
+        return $query->where('belongs_to', $userId)
+            ->whereIn('type', ['Motorista', 'Passageiro']);
+    }
 }

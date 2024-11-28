@@ -205,11 +205,12 @@
                         </ul>
                     </div>
 
-                    <div class="w-full">
+                    <div class="w-full text-center">
                         <button class="ticket-button"
                                 onclick="window.location.href='{{ auth()->check() ? route('login') : route('login') }}'">
                             Adquira Já seu ingresso!
                         </button>
+                        <small class="mt-1"> Faça login/registre-se para comprar seu ingresso!</small>
                     </div>
 
                     <x-divider color="orange" height="1px" width="100%" />
@@ -223,28 +224,28 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
                                 <h3 class="text-lg font-bold text-orange-400">PP</h3>
-                                <p class="text-sm dark:text-white">Busto: 48</p>
-                                <p class="text-sm dark:text-white">Comprimento: 71</p>
+                                <p class="text-sm dark:text-white">Busto: 48cm</p>
+                                <p class="text-sm dark:text-white">Comprimento: 71cm</p>
                             </div>
                             <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
                                 <h3 class="text-lg font-bold text-orange-400">P</h3>
-                                <p class="text-sm dark:text-white">Busto: 51</p>
-                                <p class="text-sm dark:text-white">Comprimento: 73</p>
+                                <p class="text-sm dark:text-white">Busto: 51cm</p>
+                                <p class="text-sm dark:text-white">Comprimento: 73cm</p>
                             </div>
                             <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
                                 <h3 class="text-lg font-bold text-orange-400">M</h3>
-                                <p class="text-sm dark:text-white">Busto: 54</p>
-                                <p class="text-sm dark:text-white">Comprimento: 75</p>
+                                <p class="text-sm dark:text-white">Busto: 54cm</p>
+                                <p class="text-sm dark:text-white">Comprimento: 75cm</p>
                             </div>
                             <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
                                 <h3 class="text-lg font-bold text-orange-400">G</h3>
-                                <p class="text-sm dark:text-white">Busto: 57</p>
-                                <p class="text-sm dark:text-white">Comprimento: 77</p>
+                                <p class="text-sm dark:text-white">Busto: 57cm</p>
+                                <p class="text-sm dark:text-white">Comprimento: 77cm</p>
                             </div>
                             <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
                                 <h3 class="text-lg font-bold text-orange-400">GG</h3>
-                                <p class="text-sm dark:text-white">Busto: 59</p>
-                                <p class="text-sm dark:text-white">Comprimento: 79</p>
+                                <p class="text-sm dark:text-white">Busto: 59cm</p>
+                                <p class="text-sm dark:text-white">Comprimento: 79cm</p>
                             </div>
                         </div>
                     </div>
@@ -298,11 +299,12 @@
                     </div>
 
 
-                    <div class="w-full">
+                    <div class="w-full text-center">
                         <button class="ticket-button"
                                 onclick="window.location.href='{{ auth()->check() ? route('login') : route('login') }}'">
                             Adquira Já seu ingresso!
                         </button>
+                        <small class="mt-1"> Faça login/registre-se para comprar seu ingresso!</small>
                     </div>
 
                 </div>
