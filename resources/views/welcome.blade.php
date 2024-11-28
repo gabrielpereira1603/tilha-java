@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
         <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
 
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
         <style>
             .ticket-button {
@@ -36,10 +41,21 @@
                 }
             }
 
-            .glide__slide img {
+
+            .event-images {
+                position: relative;
+            }
+
+            @media (max-width: 768px) {
+                .event-images {
+                    position: relative;
+                    width: 200px;
+                }
+            }
+
+            .swiper-slide img {
                 width: 100%; /* Largura total do contêiner */
                 height: 200px; /* Altura fixa para todas as imagens */
-                object-fit: cover; /* Garante que a imagem se ajuste sem distorcer */
                 border-radius: 10px; /* Adiciona cantos arredondados */
             }
         </style>
@@ -241,40 +257,41 @@
                             <x-instagram-icon width="30" height="30" color="currentColor"/>
                             Imagens dos Últimos Eventos
                         </a>
-                        <div class="glide">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                    <li class="glide__slide rounded-[10px]">
+
+                        <div class="event-images">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/DCKvgnCpY03/">
                                             <img src="/images/insta/img_1.jpeg" alt="Evento 1" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                    <li class="glide__slide">
+                                    </div>
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/C2Kga7CMOd1/">
                                             <img src="/images/insta/img_2.jpeg" alt="Evento 2" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                    <li class="glide__slide">
+                                    </div>
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/C3hqQBLu_O-/">
                                             <img src="/images/insta/img_3.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                    <li class="glide__slide">
+                                    </div>
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/C4Jj5-Nvxye/">
                                             <img src="/images/insta/img_4.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                    <li class="glide__slide">
+                                    </div>
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/C2I3ZuVstzo/">
                                             <img src="/images/insta/img_5.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                    <li class="glide__slide">
+                                    </div>
+                                    <div class="swiper-slide">
                                         <a href="https://www.instagram.com/p/C2JZH_ftU7_/">
                                             <img src="/images/insta/img_6.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
                                         </a>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -291,19 +308,30 @@
                 </div>
             </div>
         </div>
+
     </body>
 
     <script>
-        new Glide('.glide', {
-            type: 'carousel',
-            perView: 3, // Número de imagens por vez
-            gap: 20,    // Espaço entre imagens
-            autoplay: 3000, // Troca automática a cada 3 segundos
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true, // Ativa o modo de loop
+            autoplay: {
+                delay: 5000, // Tempo entre slides (5 segundos neste exemplo)
+                disableOnInteraction: false, // Mantém o autoplay após interações do usuário
+                pauseOnMouseEnter: true, // Pausa o autoplay quando o mouse entra na área do slider
+                pauseOnLastSlide: true, // Pausa o autoplay na última slide
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
             breakpoints: {
-                768: { perView: 1 }, // Para telas menores
-                1024: { perView: 2 } // Ajuste para tablets
+                768: {
+                    slidesPerView: 3,
+                }
             }
-        }).mount();
+        });
     </script>
 
 
