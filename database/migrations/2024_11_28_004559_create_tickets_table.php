@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('belongs_to');
             $table->enum('type', ['Motorista', 'Passageiro']);
             $table->string('car_plate')->nullable();
+            $table->string('cpf', 14)->unique();
             $table->softDeletes();
             $table->timestamps();
 

@@ -10,7 +10,7 @@ class Ticket extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['value', 'buyer', 'belongs_to', 'type', 'car_plate'];
+    protected $fillable = ['value', 'buyer', 'belongs_to', 'type', 'car_plate', 'cpf'];
 
     public function buyer()
     {
