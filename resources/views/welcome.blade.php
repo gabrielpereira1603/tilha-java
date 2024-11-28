@@ -8,6 +8,10 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+
+
         <style>
             .ticket-button {
                 width: 100%; /* Ocupa toda a largura */
@@ -30,6 +34,13 @@
                 50% {
                     transform: scale(1.05); /* Cresce 10% */
                 }
+            }
+
+            .glide__slide img {
+                width: 100%; /* Largura total do contêiner */
+                height: 200px; /* Altura fixa para todas as imagens */
+                object-fit: cover; /* Garante que a imagem se ajuste sem distorcer */
+                border-radius: 10px; /* Adiciona cantos arredondados */
             }
         </style>
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -56,6 +67,7 @@
                         <img src="{{ asset('images/logos/logo-principal.jpg') }}" alt="Trilhão do Queixada" class="object-cover">
                     </div>
                 </div>
+
 
                 <!-- Informações do evento -->
                 <div class="flex-1 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg space-y-6 h-screen overflow-y-auto">
@@ -85,13 +97,15 @@
                                 11 de Janeiro de 2025
                             </li>
                             <li class="flex items-center dark:text-white">
-                                <span class="text-yellow-500 material-icons mr-2">
+                                <a class="text-yellow-500 material-icons mr-2" href="https://www.instagram.com/jipe_clube_javalis_do_norte/" target="_blank">
                                     <x-instagram-icon width="20" height="20" color="orange"/>
-                                </span>
-                                <strong>Jipe Clube Javalis do Norte</strong>
+                                </a>
+                                <a href="https://www.instagram.com/jipe_clube_javalis_do_norte/" target="_blank"><strong>Jipe Clube Javalis do Norte</strong></a>
                             </li>
                         </ul>
                     </div>
+
+                    <x-divider color="orange" height="1px" width="100%" />
 
                     <!-- Detalhes do evento -->
                     <div>
@@ -110,6 +124,10 @@
                             </li>
                         </ul>
                     </div>
+
+                    <x-divider color="orange" height="1px" width="100%" />
+
+                    <!-- Informações de contato -->
                     <div>
                         <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
                             <x-phone-icon width="25" height="25" color="currentColor"/>
@@ -139,6 +157,9 @@
                         </ul>
                     </div>
 
+                    <x-divider color="orange" height="1px" width="100%" />
+
+                    <!-- Informacoes sobre ingressos -->
                     <div>
                         <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
                             <x-ticket-icon width="30" height="30" color="currentColor"/>
@@ -150,7 +171,7 @@
                                     <x-arrow-right-icon width="20" height="20" color="orange"/>
                                 </span>
                                 <p>
-                                    <strong class="mr-0.5">Valor inscrição: </strong><strong  class="mr-0.5">R$350,00</strong> por veículo com direito à <strong  class="mr-0.5 ml-1">2 camisetas e  adesivos.</strong>
+                                    <strong class="mr-0.5">Valor inscrição do veículo: </strong><strong  class="mr-0.5">R$350,00</strong> por veículo com direito à <strong  class="mr-0.5 ml-1">2 camisetas e  adesivos.</strong>
 
                                 </p>
                             </li>
@@ -169,13 +190,121 @@
                     </div>
 
                     <div class="w-full">
-                        <button class="ticket-button">
+                        <button class="ticket-button"
+                                onclick="window.location.href='{{ auth()->check() ? route('login') : route('login') }}'">
                             Adquira Já seu ingresso!
                         </button>
                     </div>
+
+                    <x-divider color="orange" height="1px" width="100%" />
+
+                    <!-- Detalhes sobre camisetas -->
+                    <div>
+                        <h2 class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2">
+                            <x-shirt-icon width="30" height="30" color="currentColor"/>
+                            Mais detalhes sobre as camisetas
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
+                                <h3 class="text-lg font-bold text-orange-400">PP</h3>
+                                <p class="text-sm dark:text-white">Busto: 48</p>
+                                <p class="text-sm dark:text-white">Comprimento: 71</p>
+                            </div>
+                            <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
+                                <h3 class="text-lg font-bold text-orange-400">P</h3>
+                                <p class="text-sm dark:text-white">Busto: 51</p>
+                                <p class="text-sm dark:text-white">Comprimento: 73</p>
+                            </div>
+                            <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
+                                <h3 class="text-lg font-bold text-orange-400">M</h3>
+                                <p class="text-sm dark:text-white">Busto: 54</p>
+                                <p class="text-sm dark:text-white">Comprimento: 75</p>
+                            </div>
+                            <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
+                                <h3 class="text-lg font-bold text-orange-400">G</h3>
+                                <p class="text-sm dark:text-white">Busto: 57</p>
+                                <p class="text-sm dark:text-white">Comprimento: 77</p>
+                            </div>
+                            <div class="p-4 bg-white border-2 border-orange-300 dark:bg-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center">
+                                <h3 class="text-lg font-bold text-orange-400">GG</h3>
+                                <p class="text-sm dark:text-white">Busto: 59</p>
+                                <p class="text-sm dark:text-white">Comprimento: 79</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <x-divider color="orange" height="1px" width="100%" />
+
+                    <!-- Imagens do evento -->
+                    <div>
+                        <a class="flex items-center text-xl font-bold dark:text-white mb-4 gap-2" href="https://www.instagram.com/jipe_clube_javalis_do_norte/" target="_blank">
+                            <x-instagram-icon width="30" height="30" color="currentColor"/>
+                            Imagens dos Últimos Eventos
+                        </a>
+                        <div class="glide">
+                            <div class="glide__track" data-glide-el="track">
+                                <ul class="glide__slides">
+                                    <li class="glide__slide rounded-[10px]">
+                                        <a href="https://www.instagram.com/p/DCKvgnCpY03/">
+                                            <img src="/images/insta/img_1.jpeg" alt="Evento 1" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="https://www.instagram.com/p/C2Kga7CMOd1/">
+                                            <img src="/images/insta/img_2.jpeg" alt="Evento 2" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="https://www.instagram.com/p/C3hqQBLu_O-/">
+                                            <img src="/images/insta/img_3.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="https://www.instagram.com/p/C4Jj5-Nvxye/">
+                                            <img src="/images/insta/img_4.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="https://www.instagram.com/p/C2I3ZuVstzo/">
+                                            <img src="/images/insta/img_5.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="https://www.instagram.com/p/C2JZH_ftU7_/">
+                                            <img src="/images/insta/img_6.jpeg" alt="Evento 3" class="w-full rounded-lg shadow">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="w-full">
+                        <button class="ticket-button"
+                                onclick="window.location.href='{{ auth()->check() ? route('login') : route('login') }}'">
+                            Adquira Já seu ingresso!
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </body>
+
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            perView: 3, // Número de imagens por vez
+            gap: 20,    // Espaço entre imagens
+            autoplay: 3000, // Troca automática a cada 3 segundos
+            breakpoints: {
+                768: { perView: 1 }, // Para telas menores
+                1024: { perView: 2 } // Ajuste para tablets
+            }
+        }).mount();
+    </script>
+
 
 </html>

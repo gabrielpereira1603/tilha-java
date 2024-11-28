@@ -116,10 +116,6 @@
                         <x-nav-link :href="url('/')" :active="request()->is('/')">
                             {{ __('Início') }}
                         </x-nav-link>
-
-                        <x-nav-link :href="url('/')" :active="request()->is('/')">
-                            {{ __('Sobre') }}
-                        </x-nav-link>
                     </div>
                 </div>
 
