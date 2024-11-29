@@ -1,7 +1,8 @@
 {{-- buy-ticket.blade.php --}}
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="flex font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight gap-1">
+            <x-shop-cart-icon widht="20px" height="20px" color="currentColor"/>
             {{ __('Comprar Ingressos') }}
         </h2>
     </x-slot>

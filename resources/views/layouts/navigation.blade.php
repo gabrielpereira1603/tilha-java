@@ -15,14 +15,17 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="url('/')" :active="request()->is('/')">
+                            <x-home-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Início') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            <x-ticket-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Meus Ingressos') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('buyticket')" :active="request()->routeIs('buyticket')">
+                            <x-shop-cart-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Comprar Ingressos') }}
                         </x-nav-link>
                     </div>
@@ -33,6 +36,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <x-user-icon widht="14px" height="14px" color="currentColor"/>
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ms-1">
@@ -44,17 +48,18 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('profile.edit')" class="flex items-center">
+                                <x-user-icon widht="14px" height="14px" color="currentColor"/>
                                 {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                                    this.closest('form').submit();" class="flex items-center">
+                                    <x-close-icon widht="14px" height="14px" color="currentColor"/>
                                     {{ __('Sair') }}
                                 </x-dropdown-link>
                             </form>
@@ -77,15 +82,18 @@
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
+                <x-responsive-nav-link :href="url('/')" :active="request()->is('/')" class="flex items-center">
+                    <x-home-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Início') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex items-center">
+                    <x-ticket-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Meus Ingressos') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('buyticket')" :active="request()->routeIs('buyticket')">
+                <x-responsive-nav-link :href="route('buyticket')" :active="request()->routeIs('buyticket')" class="flex items-center">
+                    <x-shop-cart-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Compar Ingressos') }}
                 </x-responsive-nav-link>
 
@@ -95,11 +103,15 @@
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
                     <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="flex items-center font-medium text-sm text-gray-500">
+                        <x-email-icon widht="10px" height="10px" color="currentColor"/>
+                        {{ Auth::user()->email }}
+                    </div>
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link :href="route('profile.edit')" class="flex items-center">
+                        <x-user-icon widht="14px" height="14px" color="currentColor"/>
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
@@ -109,7 +121,8 @@
 
                         <x-responsive-nav-link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                            this.closest('form').submit();">
+                                            this.closest('form').submit();" class="flex items-center">
+                            <x-close-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
@@ -131,10 +144,12 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="url('/')" :active="request()->is('/')">
+                            <x-home-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Início') }}
                         </x-nav-link>
 
                         <x-nav-link :href="url('/login')" :active="request()->is('/login')">
+                            <x-login-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Entrar/Registrar-se') }}
                         </x-nav-link>
                     </div>
@@ -154,38 +169,15 @@
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
+                <x-responsive-nav-link :href="url('/')" :active="request()->is('/')" class="flex items-center">
+                    <x-home-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Início') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
-                    {{ __('Sobre') }}
+                <x-responsive-nav-link :href="url('/login')" :active="request()->is('/login')" class="flex items-center">
+                    <x-login-icon widht="14px" height="14px" color="currentColor"/>
+                    {{ __('Entrar/Registrar-se') }}
                 </x-responsive-nav-link>
-            </div>
-
-            <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800 dark:text-gray-200"></div>
-                    <div class="font-medium text-sm text-gray-500"></div>
-                </div>
-
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
-                    <!-- Authentication -->
-                    <form method="POST">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                               onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
             </div>
         </div>
     @endauth
