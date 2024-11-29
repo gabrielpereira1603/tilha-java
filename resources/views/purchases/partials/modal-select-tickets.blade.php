@@ -9,23 +9,26 @@
         <div class="space-y-4">
 
             <div class="flex flex-col items-start justify-between">
-                <x-input-label for="quantity" class="text-gray-700 dark:text-gray-200">CPF do Motorista:</x-input-label>
-                <input id="quantity" type="number" min="1" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+                <x-input-label for="cpf" class="text-gray-700 dark:text-gray-200">CPF do Motorista:</x-input-label>
+                <x-text-input id="cpf" class="block mt-1 w-full"
+                              type="text"
+                              name="cpf"
+                              required/>
             </div>
 
             <div class="flex flex-col items-start justify-between">
-                <x-input-label for="quantity" class="text-gray-700 dark:text-gray-200">Placa do Veículo:</x-input-label>
-                <input id="quantity" type="number" min="1" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+                <x-input-label for="car_plate" class="text-gray-700 dark:text-gray-200">Placa do Veículo:</x-input-label>
+                <x-text-input id="car_plate" class="mt-1 block w-full "/>
             </div>
 
             <div class="flex flex-col items-start justify-between">
-                <x-input-label for="quantity" class="text-gray-700 dark:text-gray-200">Tamanho da 1º camiseta:</x-input-label>
-                <input id="quantity" type="number" min="1" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+                <x-input-label for="shirt_driver" class="text-gray-700 dark:text-gray-200">Tamanho da 1º camiseta:</x-input-label>
+                <x-text-input id="shirt_driver" class="mt-1 block w-full "/>
             </div>
 
             <div class="flex flex-col items-start justify-between">
-                <x-input-label for="quantity" class="text-gray-700 dark:text-gray-200">Tamanho da 2º camiseta:</x-input-label>
-                <input id="quantity" type="number" min="1" value="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+                <x-input-label for="shirt_driver" class="text-gray-700 dark:text-gray-200">Tamanho da 2º camiseta:</x-input-label>
+                <x-text-input id="shirt_driver" class="mt-1 block w-full "/>
             </div>
 
             <div class="flex flex-col items-start justify-between gap-4">
@@ -64,7 +67,7 @@
         <div class="mt-1 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
             <div class="flex justify-between items-center">
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-100">Total:</p>
-                <p id="total-value" class="text-lg font-bold text-green-400 dark:text-green-300">R$350,00</p>
+                <p id="total-value" class="text-lg font-bold text-green-500 dark:text-green-300">R$350,00</p>
             </div>
         </div>
 
@@ -79,8 +82,21 @@
         </div>
     </div>
 </x-modal>
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.6/dist/inputmask.min.js"></script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cpfInput = document.getElementById('cpf');
+
+        Inputmask({
+            mask: "999.999.999-99",
+            placeholder: "_",
+            clearMaskOnLostFocus: true,
+        }).mask(cpfInput);
+    });
+</script>
+<script>
+
     // Lógica para calcular o valor total com base na seleção do ingresso e quantidade
     document.getElementById('ticket-type').addEventListener('change', updateTotal);
     document.getElementById('quantity').addEventListener('input', updateTotal);
