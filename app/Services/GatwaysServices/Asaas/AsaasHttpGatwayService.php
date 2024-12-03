@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Log;
 class AsaasHttpGatwayService
 {
     private string $token;
-    private string $url =  'https://sandbox.asaas.com/api/v3';
+    //private string $url =  'https://sandbox.asaas.com/api/v3';
+    private string $url =  'https://api.asaas.com/';
+
     private string $endpoint = '';
     private $http = '';
     private string $customer;
@@ -22,7 +24,7 @@ class AsaasHttpGatwayService
     public function __construct()
     {
         $this->http = new Client();
-        $this->token = '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAwOTU3OTg6OiRhYWNoX2E3MTI2MmYyLTY2NDAtNGQyNy1hM2M2LWIzZTAxNDQzYTQxMg==';
+        $this->token = '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MTM4MzE6OiRhYWNoXzhmMGFhNjg2LTBjZjUtNDEyZi1hNGYxLWNjNDc0MzNkYjQ5Ng==';
         Log::info('AsaasHttpGatwayService instanciado com token: '.$this->token);  // Logando token na inicialização
     }
     public function getUrl(): string
@@ -110,7 +112,7 @@ class AsaasHttpGatwayService
             $request = [
                 'headers' => [
                     'accept' => 'application/json',
-                    'access_token' => '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAwOTU3OTg6OiRhYWNoX2E3MTI2MmYyLTY2NDAtNGQyNy1hM2M2LWIzZTAxNDQzYTQxMg==',
+                    'access_token' => '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MTM4MzE6OiRhYWNoXzhmMGFhNjg2LTBjZjUtNDEyZi1hNGYxLWNjNDc0MzNkYjQ5Ng==',
                     'content-type' => 'application/json',
                 ]
             ];

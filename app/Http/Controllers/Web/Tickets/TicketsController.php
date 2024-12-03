@@ -145,7 +145,7 @@ class TicketsController extends Controller
                 'email' => auth()->user()->email,
                 'cpfCnpj' => auth()->user()->cpf,
                 'mobilePhone' => auth()->user()->phone,
-                'value' => $purchase->total_value,
+                'value' => 07,
                 'notificationDisabled' => false,
                 'externalReference' => auth()->user()->id,
                 'description' => "Compra do ingresso {$purchase->id}, Trilha do Java.",
