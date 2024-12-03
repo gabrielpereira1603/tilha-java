@@ -13,13 +13,18 @@ return new class extends Migration
             $table->unsignedBigInteger('buyer_id');
             $table->decimal('total_value', 10, 2);
             $table->timestamp('purchase_date')->useCurrent();
+
+            $table->longText('qr_code')->nullable();
+            $table->timestamp('pix_expiration')->nullable();
+            $table->string('key_aleatory')->nullable();
+            $table->text('invoiceUrl')->nullable();
             $table->timestamps();
 
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('tickets', function (Blueprint $table) {
-            $table->unsignedBigInteger('purchase_id')->nullable();
+            $table->unsignedBigInteger('purchase_id')->nullable()->after('belongs_to');
             $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
         });
     }

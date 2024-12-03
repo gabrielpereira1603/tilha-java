@@ -10,16 +10,21 @@ class Ticket extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['value', 'buyer', 'belongs_to', 'type', 'car_plate', 'cpf'];
+    protected $fillable = ['value', 'buyer_id', 'belongs_to', 'purchase_id', 'type', 'car_plate', 'cpf'];
 
     public function buyer()
     {
-        return $this->belongsTo(User::class, 'buyer');
+        return $this->belongsTo(User::class, 'buyer_id');
     }
 
     public function belongsToUser()
     {
         return $this->belongsTo(User::class, 'belongs_to');
+    }
+
+    public function shirts()
+    {
+        return $this->hasMany(Shirt::class, 'ticket_id');
     }
 
     public function purchase()

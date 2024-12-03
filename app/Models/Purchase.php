@@ -13,6 +13,10 @@ class Purchase extends Model
         'buyer_id',
         'total_value',
         'purchase_date',
+        'qr_code',
+        'pix_expiration',
+        'key_aleatory',
+        'invoiceUrl'
     ];
 
 
@@ -24,5 +28,18 @@ class Purchase extends Model
     public function tickets()
     {
         return $this->hasMany(Ticket::class, 'purchase_id');
+    }
+
+
+    public function shirts()
+    {
+        return $this->hasManyThrough(
+            Shirt::class,
+            Ticket::class,
+            'purchase_id',
+            'ticket_id',
+            'id',
+            'id'
+        );
     }
 }

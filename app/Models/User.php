@@ -14,8 +14,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'cpf',
         'password',
+        'customer'
     ];
 
     protected $hidden = [
@@ -31,14 +33,19 @@ class User extends Authenticatable
         ];
     }
 
-    public function ticketsBought()
-    {
-        return $this->hasMany(Ticket::class, 'buyer');
-    }
-
     public function ticketsOwned()
     {
         return $this->hasMany(Ticket::class, 'belongs_to');
+    }
+
+
+    public function ticketsBought()
+    {
+        return $this->hasMany(Ticket::class, 'buyer_id'); // Relacionamento de um para muitos com a tabela tickets
+    }
+    public function shirts()
+    {
+        return $this->hasMany(Shirt::class, 'user_id');
     }
 
     public function purchases()

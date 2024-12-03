@@ -11,15 +11,15 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->decimal('value', 10, 2);
-            $table->unsignedBigInteger('buyer');
+            $table->unsignedBigInteger('buyer_id');
             $table->unsignedBigInteger('belongs_to');
             $table->enum('type', ['Motorista', 'Passageiro']);
             $table->string('car_plate')->nullable();
-            $table->string('cpf', 14)->unique();
+            $table->string('cpf', 14);
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('belongs_to')->references('id')->on('users')->onDelete('cascade');
         });
     }

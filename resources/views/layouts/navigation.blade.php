@@ -92,7 +92,7 @@
                     {{ __('Meus Ingressos') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('buyticket')" :active="request()->routeIs('buyticket')" class="flex items-center">
+                <x-responsive-nav-link :href="url('/buyticket')" :active="request()->is('/buyticket')" class="flex items-center">
                     <x-shop-cart-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Compar Ingressos') }}
                 </x-responsive-nav-link>
