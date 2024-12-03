@@ -12,7 +12,7 @@ class AsaasHttpGatwayService
 {
     private string $token;
     //private string $url =  'https://sandbox.asaas.com/api/v3';
-    private string $url =  'https://api.asaas.com/';
+    private string $url =  'https://api.asaas.com';
 
     private string $endpoint = '';
     private $http = '';
