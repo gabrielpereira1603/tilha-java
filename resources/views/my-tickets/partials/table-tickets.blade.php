@@ -63,7 +63,7 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100 relative">
                     @if ($ticket->purchase && $ticket->purchase->invoiceUrl)
-                        <a href="{{ $ticket->purchase->invoiceUrl }}">
+                        <a href="{{ $ticket->purchase->invoiceUrl }}" target="_blank">
                             <x-primary-button class="flex gap-1 items-center">
                                 <x-payment-icon widht="16px" height="16px" color="currentColor"/>
                                 Vizualizar
