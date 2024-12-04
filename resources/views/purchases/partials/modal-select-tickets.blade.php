@@ -97,7 +97,7 @@
                 <div class="flex gap-4 w-full mt-2">
                     <!-- Botão Limpar -->
                     <x-secondary-button class="w-full flex items-center justify-center gap-1" id="clear-button">
-                        <x-trashed-icon widht="18px" height="18px" />
+                        <x-trashed-icon widht="18px" height="18px"  />
                         Limpar
                     </x-secondary-button>
 
@@ -112,13 +112,33 @@
 
             <x-divider color="orange" width="100%" height="1px"/>
 
-            <!-- Exibição do Valor Total -->
             <div class="mt-1 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
                 <div class="flex justify-between items-center">
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-100">Total:</p>
                     <input type="text" name="total_value" id="total-value" value="350.00" readonly class="text-lg font-bold text-green-500 dark:text-green-300 bg-transparent border-none w-32 text-right"/>
                 </div>
             </div>
+
+            <div class="flex items-center gap-2 justify-end">
+                <input
+                    type="checkbox"
+                    id="accept-terms"
+                    class="h-4 w-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-400"
+                    required
+                />
+                <label for="accept-terms" class="text-sm text-gray-700 dark:text-gray-200 flex items-center gap-1 cursor-pointer">
+                    Eu li e aceito os
+                    <span
+                        class="text-orange-600 underline hover:text-orange-500 cursor-pointer"
+                        id="open-terms-modal"
+                        x-on:click.prevent="$dispatch('open-modal', 'terms-of-use')"
+                    >
+                        Termos de Uso
+                    </span>
+                </label>
+            </div>
+
+            @include('purchases.partials.modal-terms-of-use')
 
             <!-- Botões -->
             <div class="flex justify-end mt-6 gap-4">
@@ -142,13 +162,16 @@
 <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.6/dist/inputmask.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        if ({{ session('modal_open') ? 'true' : 'false' }}) {
-            // Abrir o modal automaticamente após um erro ou sucesso
-            Livewire.emit('open-modal', 'select_tickets'); // Se estiver usando Livewire
-        }
+    document.addEventListener('DOMContentLoaded', function () {
+        const carPlateInput = document.getElementById('car_plate'); // Pegando o input da placa
+        const carPlateValueSpan = document.getElementById('car-plate-value'); // Pegando o span do modal
+
+        // Adiciona um ouvinte de evento para quando o valor do input mudar
+        carPlateInput.addEventListener('input', function () {
+            // Atualiza o conteúdo do span com o valor do input
+            carPlateValueSpan.textContent = carPlateInput.value;
+        });
     });
 </script>
 <script>

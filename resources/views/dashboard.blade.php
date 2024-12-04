@@ -20,12 +20,54 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <h3 class="text-lg font-bold">Seus Tickets:</h3>
-                        @include('purchases.partials.table-tickets', ['tickets' => $tickets])
+                        <span class="flex items-center gap-1">
+                            <x-info-icon width="12px" height="12px" color="orange"/>
+                            <small class="underline cursor-pointer text-orange-500 hover:text-orange-700"
+                                   onclick="openModal()">
+                                Se tiver dúvidas de como visualizar seu comprovante de compra do ingresso clique aqui.
+                            </small>
+                        </span>
+
+                        @include('my-tickets.partials.table-tickets', ['tickets' => $tickets])
 
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="modal"
+             class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-md mx-auto">
+                <video autoplay muted loop class="w-full rounded-md" playsinline>
+                    <source src="seu-video.gif" type="video/mp4"/>
+                    Seu navegador não suporta vídeos.
+                </video>
+                <p class="text-sm text-gray-500 text-center mt-2">
+                    O vídeo será fechado automaticamente em 5 segundos.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            const modal = document.getElementById('modal');
+
+            function openModal() {
+                modal.classList.remove('opacity-0', 'pointer-events-none'); // Exibe o modal
+                modal.classList.add('opacity-100');
+
+                setTimeout(() => {
+                    fadeOutModal();
+                }, 5000); // Fecha após 5 segundos
+            }
+
+            function fadeOutModal() {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('pointer-events-none'); // Remove interação após fade-out
+                }, 300); // Tempo igual à duração do fade-out
+            }
+        </script>
     @else
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -37,4 +79,5 @@
             </div>
         </div>
     @endif
+
 </x-app-layout>

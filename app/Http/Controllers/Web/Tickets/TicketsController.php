@@ -30,25 +30,7 @@ class TicketsController extends Controller
         ]);
     }
 
-    public function viewMyTickets(Request $request)
-    {
-        $user = $request->user();
 
-        // Buscar os tickets que o usuário comprou e os tickets que pertencem ao usuário
-        $tickets = $user->ticketsOwned()  // Tickets pertencentes ao usuário (relacionamento com 'belongs_to')
-        ->orWhereIn('id', $user->ticketsBought()->pluck('id'))  // Tickets comprados pelo usuário
-        ->with([
-            'buyer',
-            'belongsToUser',
-            'shirts',
-            'purchase'
-        ])
-            ->get();
-
-        Log::debug('Tickets:', $tickets->toArray());
-
-        return view('dashboard', compact('tickets'));
-    }
 
     public function buyTicket(Request $request)
     {
@@ -145,7 +127,7 @@ class TicketsController extends Controller
                 'email' => auth()->user()->email,
                 'cpfCnpj' => auth()->user()->cpf,
                 'mobilePhone' => auth()->user()->phone,
-                'value' => 07,
+                'value' => $purchase->total_value,
                 'notificationDisabled' => false,
                 'externalReference' => auth()->user()->id,
                 'description' => "Compra do ingresso {$purchase->id}, Trilha do Java.",
