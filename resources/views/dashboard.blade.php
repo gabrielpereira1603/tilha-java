@@ -38,10 +38,7 @@
         <div id="modal"
              class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 pointer-events-none transition-opacity duration-300">
             <div class="bg-white p-4 rounded-lg shadow-lg relative max-w-md mx-auto">
-                <video autoplay muted loop class="w-full rounded-md" playsinline>
-                    <source src="seu-video.gif" type="video/mp4"/>
-                    Seu navegador não suporta vídeos.
-                </video>
+                <img src="{{ asset('images/view-payment.gif') }}" alt="Visualização do pagamento" class="w-full rounded-md">
                 <p class="text-sm text-gray-500 text-center mt-2">
                     O vídeo será fechado automaticamente em 5 segundos.
                 </p>

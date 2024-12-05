@@ -192,57 +192,64 @@
 
         // Função para adicionar um passageiro
         document.getElementById('add-passenger').addEventListener('click', function () {
-            if (passengerCount < 3) {
-                passengerCount+1;
-                totalValue += 100;
-                document.getElementById('total-value').value = totalValue.toFixed(2);
-                passengersCountInput.value = passengerCount;
-
-                // Create fields for the passenger
-                const passengerContainer = document.getElementById('passenger-container');
-
-                console.log(passengerCount)
-                const cpfInput = document.createElement('div');
-                cpfInput.classList.add('flex', 'flex-col', 'items-start', 'justify-between');
-                cpfInput.innerHTML = `
-            <x-input-label for="cpf_passenger_${passengerCount}" class="flex items-center w-full text-gray-700 dark:text-gray-200">
-                <x-user-icon width="10px" height="10px"/>
-                <span class="ml-1">CPF do Passageiro ${passengerCount + 1}:</span>
-            </x-input-label>
-            <x-text-input id="cpf_passenger_${passengerCount}" class="block mt-1 w-full" type="text" name="cpf_passenger_${passengerCount}" required/>
-        `;
-
-                const shirtInput = document.createElement('div');
-                shirtInput.classList.add('flex', 'flex-col', 'items-start', 'justify-between');
-                shirtInput.innerHTML = `
-            <x-select-label
-                id="shirt_passenger_${passengerCount}"
-                name="shirt_passenger_${passengerCount}"
-                label="Tamanho da camiseta do Passageiro ${passengerCount + 1}:"
-                :icon="'shirt-icon'"
-                :options="[
-                    '' => 'Selecione o tamanho',
-                    'PP' => 'PP',
-                    'P' => 'P',
-                    'M' => 'M',
-                    'G' => 'G',
-                    'GG' => 'GG',
-                    'XG' => 'XG'
-                ]"
-                iconWidth="12px"
-                iconHeight="12px"
-            />
-        `;
-
-                const divider = document.createElement('div');
-                divider.classList.add('h-[1px]', 'w-full', 'bg-orange-300', 'mt-5', 'mb-2');
-
-                passengerContainer.appendChild(cpfInput);
-                passengerContainer.appendChild(shirtInput);
-                passengerContainer.appendChild(divider);
-
-                noPassengerMessage.style.display = 'none'; // Hide the "no passenger" message
+            if (passengerCount >= 4) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Limite atingido',
+                    text: 'Você só pode adicionar até 4 passageiros.',
+                    confirmButtonText: 'Entendido',
+                });
+                return; // Interrompe a execução se o limite foi atingido
             }
+
+            passengerCount++;
+            totalValue += 100;
+            document.getElementById('total-value').value = totalValue.toFixed(2);
+            passengersCountInput.value = passengerCount;
+
+            // Criação dos campos para o passageiro
+            const passengerContainer = document.getElementById('passenger-container');
+
+            const cpfInput = document.createElement('div');
+            cpfInput.classList.add('flex', 'flex-col', 'items-start', 'justify-between');
+            cpfInput.innerHTML = `
+        <x-input-label for="cpf_passenger_${passengerCount}" class="flex items-center w-full text-gray-700 dark:text-gray-200">
+            <x-user-icon width="10px" height="10px"/>
+            <span class="ml-1">CPF do Passageiro ${passengerCount}:</span>
+        </x-input-label>
+        <x-text-input id="cpf_passenger_${passengerCount}" class="block mt-1 w-full" type="text" name="cpf_passenger_${passengerCount}" required/>
+    `;
+
+            const shirtInput = document.createElement('div');
+            shirtInput.classList.add('flex', 'flex-col', 'items-start', 'justify-between');
+            shirtInput.innerHTML = `
+        <x-select-label
+            id="shirt_passenger_${passengerCount}"
+            name="shirt_passenger_${passengerCount}"
+            label="Tamanho da camiseta do Passageiro ${passengerCount}:"
+            :icon="'shirt-icon'"
+            :options="[
+                '' => 'Selecione o tamanho',
+                'PP' => 'PP',
+                'P' => 'P',
+                'M' => 'M',
+                'G' => 'G',
+                'GG' => 'GG',
+                'XG' => 'XG'
+            ]"
+            iconWidth="12px"
+            iconHeight="12px"
+        />
+    `;
+
+            const divider = document.createElement('div');
+            divider.classList.add('h-[1px]', 'w-full', 'bg-orange-300', 'mt-5', 'mb-2');
+
+            passengerContainer.appendChild(cpfInput);
+            passengerContainer.appendChild(shirtInput);
+            passengerContainer.appendChild(divider);
+
+            noPassengerMessage.style.display = 'none'; // Esconde a mensagem de "sem passageiros"
         });
         // Limpar campos
         document.getElementById('clear-button').addEventListener('click', function () {
