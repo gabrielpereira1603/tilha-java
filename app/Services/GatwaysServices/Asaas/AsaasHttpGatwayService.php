@@ -24,7 +24,7 @@ class AsaasHttpGatwayService
     public function __construct()
     {
         $this->http = new Client();
-        $this->token = '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MTM4MzE6OiRhYWNoXzhmMGFhNjg2LTBjZjUtNDEyZi1hNGYxLWNjNDc0MzNkYjQ5Ng==';
+        $this->token = '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MjI0NTg6OiRhYWNoX2E2OGRjYWY0LWZmMWEtNGVhMS1iM2M2LTRmNzIyMGE3Njg0ZQ==';
         Log::info('AsaasHttpGatwayService instanciado com token: '.$this->token);  // Logando token na inicialização
     }
     public function getUrl(): string
@@ -112,7 +112,7 @@ class AsaasHttpGatwayService
             $request = [
                 'headers' => [
                     'accept' => 'application/json',
-                    'access_token' => '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MTM4MzE6OiRhYWNoXzhmMGFhNjg2LTBjZjUtNDEyZi1hNGYxLWNjNDc0MzNkYjQ5Ng==',
+                    'access_token' => '$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MjI0NTg6OiRhYWNoX2E2OGRjYWY0LWZmMWEtNGVhMS1iM2M2LTRmNzIyMGE3Njg0ZQ==',
                     'content-type' => 'application/json',
                 ]
             ];
