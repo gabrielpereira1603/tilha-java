@@ -37,8 +37,8 @@ class TicketsController extends Controller
         $validatedData = $request->validate([
             'cpf_driver' => ['required', 'string', new CpfRule()],
             'car_plate' => 'required|string|max:10',
-            'shirt_driver_1' => 'required|string|in:PP,P,M,G,GG',
-            'shirt_driver_2' => 'nullable|string|in:PP,P,M,G,GG',
+            'shirt_driver_1' => 'required|string|in:PP,P,M,G,GG,XG',
+            'shirt_driver_2' => 'nullable|string|in:PP,P,M,G,GG,XG',
             // Validação para os passageiros
             'cpf_passenger_0' => ['nullable', 'string', new CpfRule()],
             'cpf_passenger_1' => ['nullable', 'string', new CpfRule()],
