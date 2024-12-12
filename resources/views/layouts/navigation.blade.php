@@ -19,6 +19,13 @@
                             {{ __('Início') }}
                         </x-nav-link>
 
+                        @if(Auth::user()->role != 'Client')
+                            <x-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+                                <x-manage-icon widht="14px" height="14px" color="currentColor"/>
+                                {{ __('Gerenciamento') }}
+                            </x-nav-link>
+                        @endif
+
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             <x-ticket-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Meus Ingressos') }}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\Manage\ManageController;
 use App\Http\Controllers\Web\PaymentPixController;
 use App\Http\Controllers\Web\Tickets\MyTicketsController;
 use App\Http\Controllers\Web\Tickets\TicketsController;
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/buyticket', [TicketsController::class, 'viewBuyTicket'])->middleware(['auth', 'verified'])->name('buyticket');
     Route::post('/purchases', [TicketsController::class, 'buyTicket'])->middleware(['auth', 'verified'])->name('post.buyticket');
 
+
+    Route::get('/manage', [ManageController::class, 'index'])->name('manage');
 });
 
 require __DIR__.'/auth.php';
