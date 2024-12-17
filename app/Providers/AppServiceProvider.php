@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Contracts\PaymentGatwayInterface;
 use App\Models\User;
 use App\Services\GatwaysServices\Asaas\AsaasPixGatwayService;
+use App\Services\GatwaysServices\MercadoPago\MercadoPagoPixGatewayService;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -38,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
             $classes = [
                 'ASAAS' => [
                     BillingTypeEnum::PIX->name => AsaasPixGatwayService::class
+                ],
+                'MERCADOPAGO' => [
+                    BillingTypeEnum::PIX->name => MercadoPagoPixGatewayService::class
                 ]
             ];
 

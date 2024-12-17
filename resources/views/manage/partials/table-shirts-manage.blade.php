@@ -3,28 +3,28 @@
         <thead>
         <tr>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                    <span class="flex items-center gap-1">
-                        <x-size-icon width="12px" height="12px" color="currentColor" />
-                        Tamanho
-                    </span>
+                <span class="flex items-center gap-1">
+                    <x-size-icon width="12px" height="12px" color="currentColor" />
+                    Tamanho
+                </span>
             </th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                    <span class="flex items-center gap-1">
-                        <x-buyer-icon width="12px" height="12px" color="currentColor" />
-                        Comprador
-                    </span>
+                <span class="flex items-center gap-1">
+                    <x-buyer-icon width="12px" height="12px" color="currentColor" />
+                    Comprador
+                </span>
             </th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                    <span class="flex items-center gap-1">
-                        <x-contact-icon width="14px" height="14px" color="currentColor" />
-                        Contato
-                    </span>
+                <span class="flex items-center gap-1">
+                    <x-contact-icon width="14px" height="14px" color="currentColor" />
+                    Contato
+                </span>
             </th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">
-                    <span class="flex items-center gap-1">
-                        <x-calendar-icon width="12px" height="12px" color="currentColor" />
-                        Data da Compra
-                    </span>
+                <span class="flex items-center gap-1">
+                    <x-calendar-icon width="12px" height="12px" color="currentColor" />
+                    Data da Compra
+                </span>
             </th>
         </tr>
         </thead>
@@ -59,6 +59,7 @@
                 </tr>
             @endforeach
         @endforeach
+        {{ $tickets->links() }}
         </tbody>
     </table>
 </div>
