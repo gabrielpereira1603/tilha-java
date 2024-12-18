@@ -46,8 +46,8 @@ class MercadoPagoPixGatewayService
                 'payment_method_id' => 'pix',
                 'payer' => [
                     'email' => $data['email'],
-                    'first_name' => $data['name'] ?? '',
-                    'last_name' => '',
+                    'first_name' => $data['first_name'] ?? '',
+                    'last_name' => $data['last_name'],
                     'identification' => [
                         'type' => 'CPF',
                         'number' => $data['cpfCnpj']

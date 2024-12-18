@@ -94,6 +94,7 @@ class TicketsController extends Controller
                         "title" => "Ingresso Motorista",
                         "description" => "Ingresso para motorista do evento Trilha do Java",
                         "quantity" => 1,
+                        "type" => "ingressos",
                         "unit_price" => $driverTicket->value,
                     ]
                 ];
@@ -130,6 +131,7 @@ class TicketsController extends Controller
                             "title" => "Ingresso Passageiro",
                             "description" => "Ingresso para passageiro do evento Trilha do Java",
                             "quantity" => 1,
+                            "type" => "ingressos",
                             "unit_price" => $passengerTicket->value,
                         ];
                     } else {
@@ -137,10 +139,18 @@ class TicketsController extends Controller
                     }
                 }
 
+                $fullName = auth()->user()->name;
+                $nameParts = explode(' ', $fullName);
+
+                $firstName = $nameParts[0];
+                $lastName = isset($nameParts[1]) ? implode(' ', array_slice($nameParts, 1)) : '';
+
+
                 $paymentData = [
                     'purchase_id' => $purchase->id,
                     'customer' => auth()->user()->customer,
-                    'name' => auth()->user()->name,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
                     'email' => auth()->user()->email,
                     'cpfCnpj' => auth()->user()->cpf,
                     'mobilePhone' => auth()->user()->phone,
