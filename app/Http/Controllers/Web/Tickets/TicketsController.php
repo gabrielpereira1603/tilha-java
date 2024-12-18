@@ -57,7 +57,6 @@ class TicketsController extends Controller
             DB::beginTransaction();
 
             try {
-                // Criando a compra
                 $purchase = Purchase::create([
                     'buyer_id' => auth()->id(),
                     'total_value' => $validatedData['total_value'],
@@ -65,7 +64,6 @@ class TicketsController extends Controller
                 ]);
                 Log::info("Purchase criada: ", ['purchase_id' => $purchase->id]);
 
-                // Criando o ingresso do motorista
                 $driverTicket = Ticket::create([
                     'buyer_id' => auth()->id(),
                     'belongs_to' => auth()->id(),
@@ -90,7 +88,16 @@ class TicketsController extends Controller
                     ]);
                 }
 
-                // Processando os passageiros (de 0 até 4)
+                $items = [
+                    [
+                        "id" => $driverTicket->id,
+                        "title" => "Ingresso Motorista",
+                        "description" => "Ingresso para motorista do evento Trilha do Java",
+                        "quantity" => 1,
+                        "unit_price" => $driverTicket->value,
+                    ]
+                ];
+
                 for ($i = 0; $i <= 3; $i++) {
                     $cpfKey = "cpf_passenger_$i";
                     $shirtKey = "shirt_passenger_$i";
@@ -117,6 +124,14 @@ class TicketsController extends Controller
                                 'user_id' => null,
                             ]);
                         }
+
+                        $items[] = [
+                            "id" => $passengerTicket->id,
+                            "title" => "Ingresso Passageiro",
+                            "description" => "Ingresso para passageiro do evento Trilha do Java",
+                            "quantity" => 1,
+                            "unit_price" => $passengerTicket->value,
+                        ];
                     } else {
                         Log::warning("Passenger $i CPF not provided for purchase #{$purchase->id}");
                     }
@@ -133,14 +148,15 @@ class TicketsController extends Controller
                     'notificationDisabled' => false,
                     'externalReference' => auth()->user()->id,
                     'description' => "Compra do ingresso {$purchase->id}, Trilha do Java.",
-
+                    'additional_info' => [
+                        "items" => $items
+                    ]
                 ];
 
                 $paymentGateway = new MercadoPagoPixGatewayService();
                 $paymentResponse = $paymentGateway->process($paymentData);
 
                 $paymentContent = $paymentResponse->getContent();
-
                 $invoiceUrl = data_get($paymentContent, 'point_of_interaction.transaction_data.ticket_url', null);
                 $qrCode = data_get($paymentContent, 'point_of_interaction.transaction_data.qr_code_base64', null);
                 $pixExpiration = data_get($paymentContent, 'date_of_expiration', null);

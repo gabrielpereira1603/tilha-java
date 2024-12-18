@@ -15,7 +15,6 @@ use MercadoPago\Client\Common\RequestOptions;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Exceptions\MPApiException;
 use MercadoPago\MercadoPagoConfig;
-use Mockery\Exception;
 
 class MercadoPagoPixGatewayService
 {
@@ -24,7 +23,7 @@ class MercadoPagoPixGatewayService
 
     public function __construct()
     {
-        MercadoPagoConfig::setAccessToken(getenv('MERCADO_PAGO_ACCESS_TOKEN'));
+        MercadoPagoConfig::setAccessToken('APP_USR-4772939421535453-121714-74361b771e6be547cbbfea8656b5da77-2162461019');
 
         $this->client = new PaymentClient();
 
@@ -39,6 +38,9 @@ class MercadoPagoPixGatewayService
     {
         try {
             $request = [
+                "additional_info" => [
+                    "items" => $data['additional_info']['items']
+                ],
                 'transaction_amount' => floatval($data['value']),
                 'description' => 'Pagamento do Ingresso Trilha do Java 5º Edição',
                 'payment_method_id' => 'pix',
@@ -52,9 +54,8 @@ class MercadoPagoPixGatewayService
                     ],
                 ],
                 'external_reference' => $data['purchase_id'] ?? uniqid(),
+                'notification_url' => 'https://trilhadojava.somosdevteam.com/'
             ];
-
-
             $payment = $this->client->create($request, $this->requestOptions)->getResponse();
 
             return $payment;

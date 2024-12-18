@@ -64,7 +64,7 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
+                                                 onclick="event.preventDefault();
                                                     this.closest('form').submit();" class="flex items-center">
                                     <x-close-icon widht="14px" height="14px" color="currentColor"/>
                                     {{ __('Sair') }}
@@ -127,7 +127,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
+                                               onclick="event.preventDefault();
                                             this.closest('form').submit();" class="flex items-center">
                             <x-close-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Log Out') }}
