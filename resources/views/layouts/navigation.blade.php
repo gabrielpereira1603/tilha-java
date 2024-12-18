@@ -26,6 +26,11 @@
                             </x-nav-link>
                         @endif
 
+                        <x-nav-link :href="route('history-purchase')" :active="request()->routeIs('history-purchase')">
+                            <x-purchase-history-icon widht="14px" height="14px" color="currentColor"/>
+                            {{ __('Histórico de Compras') }}
+                        </x-nav-link>
+
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             <x-ticket-icon widht="14px" height="14px" color="currentColor"/>
                             {{ __('Meus Ingressos') }}
@@ -92,6 +97,11 @@
                 <x-responsive-nav-link :href="url('/')" :active="request()->is('/')" class="flex items-center">
                     <x-home-icon widht="14px" height="14px" color="currentColor"/>
                     {{ __('Início') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('history-purchase')" :active="request()->routeIs('history-purchase')" class="flex items-center">
+                    <x-purchase-history-icon widht="14px" height="14px" color="currentColor"/>
+                    {{ __('Histórico de Compras') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex items-center">
