@@ -99,10 +99,6 @@
                     {{ __('Início') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('history-purchase')" :active="request()->routeIs('history-purchase')" class="flex items-center">
-                    <x-purchase-history-icon widht="14px" height="14px" color="currentColor"/>
-                    {{ __('Histórico de Compras') }}
-                </x-responsive-nav-link>
 
                 @if(Auth::user()->role != 'Client')
                     <x-responsive-nav-link  :href="route('manage')" :active="request()->routeIs('manage')" class="flex items-center">
