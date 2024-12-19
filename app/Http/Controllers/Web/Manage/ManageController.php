@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Shirt;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -18,18 +19,18 @@ class ManageController extends Controller
             'purchase'
         ])->paginate(10);
 
+        $shirts = Shirt::all();
+
         $shirtSizes = ['PP' => 0, 'P' => 0, 'M' => 0, 'G' => 0, 'GG' => 0, 'XG' => 0];
 
         $totalShirts = 0;
 
-        foreach ($tickets as $ticket) {
-            foreach ($ticket->shirts as $shirt) {
-                $size = $shirt->size;
-                if (isset($shirtSizes[$size])) {
-                    $shirtSizes[$size]++;
-                }
-                $totalShirts++;
+        foreach ($shirts as $shirt) {
+            $size = $shirt->size;
+            if (isset($shirtSizes[$size])) {
+                $shirtSizes[$size]++;
             }
+            $totalShirts++;
         }
 
         return view('manage', [

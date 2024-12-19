@@ -49,7 +49,7 @@ class IndexHistoryPurchaseController extends Controller
     public function getInfoPix(Request $request){
         $userId = auth()->id();
 
-        $purchases = Purchase::where('buyer_id', $userId)->get();
+        $purchases .= Purchase::where('buyer_id', $userId)->get();
 
         // Instancia o serviço de integração com Mercado Pago
         $mercadoPagoService = new MercadoPagoGetPixGatewayService();
