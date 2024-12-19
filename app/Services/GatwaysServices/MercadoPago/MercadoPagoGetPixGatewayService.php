@@ -31,6 +31,6 @@ class MercadoPagoGetPixGatewayService
             "end_date" => $data['end_date'],
         ]);
 
-       return $this->client->search($searchRequest);
+       return $this->client->search($searchRequest)->getResponse();
     }
 }

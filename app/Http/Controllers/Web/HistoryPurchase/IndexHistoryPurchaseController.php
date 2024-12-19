@@ -32,47 +32,22 @@ class IndexHistoryPurchaseController extends Controller
                 "range" => "date_created",
                 "begin_date" => "NOW-30DAYS",
                 "end_date" => "NOW",
-            ]);
+            ])->getContent();
+            $status = null;
+
+            if (isset($response['results']) && count($response['results']) > 0) {
+                $status = $response['results'][0]['status'];
+            }
 
             $purchaseDetails[] = [
                 'purchase' => $purchase,
-                'mercado_pago_data' => $response, // Dados da resposta do Mercado Pago
+                'status' => $status
             ];
         }
 
         return view('purchase-history', [
             'purchases' => $purchases,
+            'purchaseDetails' => $purchaseDetails,
         ]);
     }
-
-
-    public function getInfoPix(Request $request){
-        $userId = auth()->id();
-
-        $purchases .= Purchase::where('buyer_id', $userId)->get();
-
-        // Instancia o serviço de integração com Mercado Pago
-        $mercadoPagoService = new MercadoPagoGetPixGatewayService();
-
-        $purchaseDetails = [];
-
-        foreach ($purchases as $purchase) {
-            // Cria a requisição para cada compra
-            $response = $mercadoPagoService->process([
-                "external_reference" => $purchase->external_reference,
-                "sort" => "date_created",
-                "criteria" => "desc",
-                "range" => "date_created",
-                "begin_date" => "NOW-30DAYS",
-                "end_date" => "NOW",
-            ]);
-
-            $purchaseDetails[] = [
-                'purchase' => $purchase,
-                'mercado_pago_data' => $response, // Dados da resposta do Mercado Pago
-            ];
-        }
-        return $purchaseDetails;
-    }
-
 }

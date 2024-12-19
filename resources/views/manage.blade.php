@@ -20,11 +20,11 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100" x-data="{ search: '' }">
                         <h3 class="text-lg font-bold flex items-center justify-between gap-2">
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2 sm:flex-row flex-col">
                                 <x-shirt-icon width="20px" height="20px" color="currentColor"/>
                                 Pedidos de Camisetas:
                                 <span class="flex justify-center items-center space-x-2">
-                                          <span class="px-2 py-1 text-sm font-medium text-gray-100 bg-gray-800 rounded dark:bg-gray-200 dark:text-gray-700">
+                                    <span class="px-2 py-1 text-sm font-medium text-gray-100 bg-gray-800 rounded dark:bg-gray-200 dark:text-gray-700">
                                         P: {{ $shirtSizes['PP'] }}
                                     </span>
                                     <span class="px-2 py-1 text-sm font-medium text-gray-100 bg-gray-800 rounded dark:bg-gray-200 dark:text-gray-700">
@@ -48,19 +48,6 @@
                                     </span>
                                 </span>
                             </div>
-
-                            <!-- Campo de Busca -->
-                            {{--                            <div class="flex items-center">--}}
-                            {{--                                <span class="bg-gray-900 p-2 flex items-center border overflow-hidden rounded-l-lg">--}}
-                            {{--                                    <x-search-icon width="20px" height="20px" color="white"/>--}}
-                            {{--                                </span>--}}
-                            {{--                                <x-text-input--}}
-                            {{--                                    type="text"--}}
-                            {{--                                    x-model="search"--}}
-                            {{--                                    placeholder="Buscar..."--}}
-                            {{--                                    class="w-full px-4 py-2 text-sm rounded-l-none focus:outline-none dark:bg-gray-700 dark:text-gray-100"--}}
-                            {{--                                />--}}
-                            {{--                            </div>--}}
                         </h3>
 
                         <!-- Tabela -->
