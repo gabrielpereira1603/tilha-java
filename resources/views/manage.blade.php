@@ -25,7 +25,7 @@
                                 Pedidos de Camisetas:
                                 <span class="flex justify-center items-center space-x-2">
                                     <span class="px-2 py-1 text-sm font-medium text-gray-100 bg-gray-800 rounded dark:bg-gray-200 dark:text-gray-700">
-                                        P: {{ $shirtSizes['PP'] }}
+                                        PP: {{ $shirtSizes['PP'] }}
                                     </span>
                                     <span class="px-2 py-1 text-sm font-medium text-gray-100 bg-gray-800 rounded dark:bg-gray-200 dark:text-gray-700">
                                         P: {{ $shirtSizes['P'] }}
