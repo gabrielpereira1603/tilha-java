@@ -18,20 +18,8 @@
                 <div class="w-full p-4 text-gray-900 dark:text-gray-100 gap-1 ">
                     <ul id="ticket-list">
                         <li class="flex justify-between items-center gap-2 border border-orange-300 rounded-[10px] p-4 mb-2">
-                            <div class="flex items-center gap-2">
-                                <x-driver-icon color="orange"/>
-                                <p>Inscrição Do Veículo - <strong>R$350,00</strong></p>
-                            </div>
-                            <x-primary-button
-                                type="button"
-                                style="background: orange !important;"
-                                class="flex gap-2 text-blue-500"
-                                x-data=""
-                                x-on:click.prevent="$dispatch('open-modal', 'select_tickets')">
-                                <i class="fa fa-plus"></i>
-                                Comprar
-                            </x-primary-button>
-                            @include('purchases.partials.modal-select-tickets')
+
+
                         </li>
                     </ul>
                 </div>
